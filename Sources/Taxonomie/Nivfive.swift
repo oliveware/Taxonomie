@@ -5,7 +5,7 @@
 //  Created by Herve Crespel on 06/07/2025.
 //
 
-struct Nivfive {
+struct Nivfive: Codable {
     public var id:Int
     var tid:TID?
     
