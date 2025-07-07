@@ -29,7 +29,7 @@ struct ThreeView: View {
             let quart = nivthree.nivfours[0]
             nivfour = quart
             nivfive = Nivfive()
-            tid = tid([nivzero.id, nivone.id, nivtwo.id, nivthree.id, quart.id])
+            tid = TID([nivzero.id, nivone.id, nivtwo.id, nivthree.id, quart.id])
         } else {
             choix = true
         }
@@ -40,7 +40,7 @@ struct ThreeView: View {
                 HStack(alignment:.top)  {
                     VStack {
                         // TextField("",text:$nivthree.nom)
-                        Text("nivfour")
+                        Text("niveau 4")
                         if !choix {
                             HStack {
                                 Text(nivfour.nom).frame(width:150).padding(3)
@@ -55,7 +55,7 @@ struct ThreeView: View {
                                 Button(action:{
                                     nivfour = item.wrappedValue
                                     nivfive = Nivfive()
-                                    tid = tid([nivzero.id, nivone.id, nivtwo.id, nivthree.id, item.id])
+                                    tid = TID([nivzero.id, nivone.id, nivtwo.id, nivthree.id, item.id])
                                     choix = false
                                 })
                                 {
@@ -65,7 +65,7 @@ struct ThreeView: View {
                         }
                     }
                     
-                    NivfourView(tid:$tid, nivzero:Nivzero, nivone:nivone, nivtwo:nivtwo, nivthree:nivthree, nivfour:$nivfour, nivfive:$nivfive)
+                    FourView(tid:$tid, nivzero:nivzero, nivone:nivone, nivtwo:nivtwo, nivthree:nivthree, nivfour:$nivfour, nivfive:$nivfive)
                 }.frame(alignment:.leading)
             
         } else {

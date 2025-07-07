@@ -32,7 +32,7 @@ struct TwoView: View {
         
                 HStack(alignment:.top)  {
                     VStack(alignment:.leading) {
-                        Text("nivthree")
+                        Text("niveau 3")
                         if !choix && !(nivthree.nom == "") {
                             HStack {
                                 Text(nivthree.nom).frame(width:120)
@@ -55,7 +55,7 @@ struct TwoView: View {
                                         nivfour = Nivfour()
                                     }
                                     nivfive = Nivfive()
-                                    tid = tid([nivzero.id,nivone.id, nivtwo.id, item.id])
+                                    tid = TID([nivzero.id,nivone.id, nivtwo.id, item.id])
                                     choix = false
                                 })
                                 { Text(item.wrappedValue.nom).frame(width:120) }
@@ -63,14 +63,14 @@ struct TwoView: View {
                         }
                     }
                     
-                    NivthreeView(tid:$tid, nivzero:Nivzero, nivone:nivone, nivtwo:nivtwo, nivthree:$nivthree, nivfour:$nivfour, nivfive:$nivfive)
+                    ThreeView(tid:$tid, nivzero:nivzero, nivone:nivone, nivtwo:nivtwo, nivthree:$nivthree, nivfour:$nivfour, nivfive:$nivfive)
                 }.frame(alignment:.leading).padding(20)
                 
                 HStack (spacing: 20) {
                     GroupBox("tid") {
                         Text(tid.id)
                     }
-                    if !nivfive.numvoie.isNaN {
+                /*    if !nivfive.numvoie.isNaN {
                         VStack{
                             GroupBox("Adresse") {
                                 Text(nivfive.adresse())
@@ -81,7 +81,7 @@ struct TwoView: View {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }.padding(20)
                 
             }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ZeroView : View {
     @Binding var tid : TID
-    @State var nivzero:Nivzero = Nivzeroset.Europe
+    @State var nivzero: Nivzero
     
     @State var selection = 0
     @State var edition = false
@@ -21,9 +21,9 @@ struct ZeroView : View {
                 TabView(selection: $selection) {
                     ForEach($nivzero.nivones){
                         nivone in
-                        NivoneView(tid:$tid, nivzero:$nivzero, nivone:nivone)
+                        OneView(tid:$tid, nivzero:$nivzero, nivone:nivone)
                             .tabItem{Text(nivone.wrappedValue.nom)}.tag(nivone.id)
-                            .onChange(of:nivone.id, {tid=tid([nivzero.id, nivone.id])})
+                            .onChange(of:nivone.id, {tid = TID([nivzero.id, nivone.id])})
                     }
                     
                 }
@@ -42,14 +42,17 @@ struct ZeroView : View {
 
 struct ZeroPreview : View {
     @State var tid = TID([])
-    var nivzero = Nivzeroset.Europe
+    var  zero : Nivzero
     
     var body:some View {
-        ZeroView(tid:$tid, nivzero: nivzero)
-            .frame(width:600,height:500)
+        ZeroView(tid:$tid, nivzero: zero)
+            //.frame(width:600,height:500)
     }
 }
 
-#Preview {
-    ZeroPreview()
+#Preview("produits") {
+    ZeroPreview(zero:Globalset(classification).items[0])
+}
+#Preview("services") {
+    ZeroPreview(zero:Globalset(classification).items[1])
 }

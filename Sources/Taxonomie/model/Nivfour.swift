@@ -6,14 +6,13 @@
 //
 
 import Foundation
-
+@MainActor
 public struct Nivfour : Codable, Identifiable {
     
     public var id:Int
     var tid:TID?
     
     public var nom = ""
-  //  public var pays:String { nom }
     
     var nivfives:[Nivfive] = []
     
@@ -21,7 +20,7 @@ public struct Nivfour : Codable, Identifiable {
     init(_ nivthree:TID) {
        let nivfourid = TID(nivthree)
         tid = nivfourid
-        id = nivfourid.nivone!
+        id = nivfourid.nivfour!
     }
     
     init(_ json:String) {

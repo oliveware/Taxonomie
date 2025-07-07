@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+@MainActor
 public struct Nivzero : Codable {
     
     var id:Int
@@ -16,10 +16,10 @@ public struct Nivzero : Codable {
     var nom = ""
     var nivones : [Nivone] = []
     
-    init(_ id:Int, _ nom:String, _ lands: [Nivone]) {
+    init(_ id:Int, _ nom:String, _ ones: [Nivone]) {
         self.id = id
         self.nom = nom
-        nivones = lands
+        nivones = ones
     }
     
    /* init(_ json:String) {
@@ -28,7 +28,7 @@ public struct Nivzero : Codable {
         self = carto
     }*/
     
-    func insert(_ lieu: Lieu){
+    func insert(_ niveau: Niveau){
         
     }
     mutating func add() {
@@ -47,29 +47,7 @@ public struct Nivzero : Codable {
     }
 }
 
-struct Nivzeroset: Codable {
-    static let Europe = Nivzeroset(nivzeroset).items[1]
-    
-    var items : [Nivzero]
-    
-    init(_ json:String) {
-        let jsonData = json.data(using: .utf8)!
-        let terre = try! JSONDecoder().decode(Nivzeroset.self, from: jsonData)
-        self = terre
-        TID.nextinit(terre.items)
-    }
-    
-    subscript(_ id:Int) -> Nivzero? {
-        var found : Nivzero?
-        for nivzero in items {
-            if nivzero.id == id {
-                found = nivzero
-                break
-            }
-        }
-        return found
-    }
-}
+
 
 
 

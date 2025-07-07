@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+@MainActor
 public struct Nivone : Codable, Identifiable {
 
     public var id:Int

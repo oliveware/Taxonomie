@@ -19,12 +19,12 @@ struct FourView : View {
         if nivfour.nivfives.count > 0 {
             HStack {
                 VStack {
-                    Text("nivfives")
+                    Text("niveau 5")
                     ForEach($nivfour.nivfives){
                         item in
                         Button(action:{
                             nivfive = item.wrappedValue
-                            tid = tid([nivzero.id, nivone.id, nivtwo.id, nivthree.id,
+                            tid = TID([nivzero.id, nivone.id, nivtwo.id, nivthree.id,
                                        nivfour.id, item.id])
                             nivfive.tid = tid
                         })
@@ -34,7 +34,7 @@ struct FourView : View {
                     }
                 }
                 
-                //ParcelleView(parcelle:$selected)
+                //FiveView(parcelle:$selected)
             }.frame(alignment:.leading)
         } else {
             if nivfour.nom != "" {
