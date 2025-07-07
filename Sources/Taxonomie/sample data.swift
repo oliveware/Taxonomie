@@ -5,20 +5,17 @@
 //  Created by Herve Crespel on 06/07/2025.
 //
 
-let nivzeros = """
-{"sept" : [
-    {   "id":7, "nom":"Antartique", "nivones": [] },
-    {   "id":1, "nom":"Europe", "nivones": [\(nivun)] },
-    {   "id":2, "nom":"Amérique du nord", "nivones": [] },
-    {   "id":3, "nom":"Amérique du sud", "nivones": [] },
-    {   "id":4, "nom":"Océanie", "nivones": [] },
-    {   "id":5, "nom":"Asie", "nivones": [] },
-    {   "id":6, "nom":"Afrique", "nivones": [] }
+let nivzeroset = """
+[
+
+    {   "id":1, "nom":"Produits", "nivzeros": [\(produits)] },
+
 ]}
 """
 
-let nivun = """
-{"id":1, "nom":"niveau 1",
+let produits = """
+[
+    {"id":1, "nom":"niveau 1",
         "nivtwos":[
             {"id":1, "nom":"Auvergne-Rhône-Alpes",
                 "nivthrees":[
@@ -34,6 +31,8 @@ let nivun = """
                     {"id":3,"nom":"Belfort", "nivfours":[]}
                 ]
             }
+        ]
+    }   
 ]
-}
+
 """

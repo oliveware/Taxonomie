@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Nivfour : Codable {
+public struct Nivthree : Codable, Identifiable {
     
     public var id:Int
     var tid:TID?
@@ -15,23 +15,24 @@ public struct Nivfour : Codable {
     public var nom = ""
   //  public var pays:String { nom }
     
-    var nivfives:[Nivfive] = []
+    var nivfours:[Nivfour] = []
     
-    init(_ nivthree:TID) {
-       let nivfourid = TID(nivthree)
-        tid = nivfourid
-        id = nivfourid.nivone!
+    init() {id = 0}
+    init(_ nivone:TID) {
+       let nivtwotid = TID(nivone)
+        tid = nivtwotid
+        id = nivtwotid.nivone!
     }
     
     init(_ json:String) {
         let jsonData = json.data(using: .utf8)!
-        let four = try! JSONDecoder().decode(Nivfour.self, from: jsonData)
-        self = four
+        let three = try! JSONDecoder().decode(Nivthree.self, from: jsonData)
+        self = three
     }
 
-    subscript(_ id:Int) -> Nivfive? {
-        var found : Nivfive?
-        for niv in nivfives {
+    subscript(_ id:Int) -> Nivfour? {
+        var found : Nivfour?
+        for niv in nivfours {
             if niv.id == id {
                 found = niv
                 break
@@ -41,6 +42,6 @@ public struct Nivfour : Codable {
     }
     
     mutating func add() {
-        nivfives.append(Nivfive(tid ?? TID()))
+        nivfours.append(Nivfour(tid ?? TID()))
     }
 }

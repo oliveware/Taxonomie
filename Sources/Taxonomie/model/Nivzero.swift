@@ -48,22 +48,22 @@ public struct Nivzero : Codable {
 }
 
 struct Nivzeroset: Codable {
-    static var Europe = Nivzeroset(nivzeroset).sept[1]
+    static let Europe = Nivzeroset(nivzeroset).items[1]
     
-    var sept : [Nivzero]
+    var items : [Nivzero]
     
     init(_ json:String) {
         let jsonData = json.data(using: .utf8)!
         let terre = try! JSONDecoder().decode(Nivzeroset.self, from: jsonData)
         self = terre
-        TID.nextinit(terre.sept)
+        TID.nextinit(terre.items)
     }
     
-    subscript(_ id:Int) -> Nivzeroset? {
-        var found : Nivzeroset?
-        for nivzeroset in sept {
-            if nivzeroset.id == id {
-                found = nivzeroset
+    subscript(_ id:Int) -> Nivzero? {
+        var found : Nivzero?
+        for nivzero in items {
+            if nivzero.id == id {
+                found = nivzero
                 break
             }
         }

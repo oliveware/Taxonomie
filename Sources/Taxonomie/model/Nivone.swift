@@ -17,8 +17,8 @@ public struct Nivone : Codable, Identifiable {
     
     var nivtwos:[Nivtwo] = []
     
-    init(_ continent:TID) {
-       let nivonetid = TID(continent)
+    init(_ nivzero:TID) {
+       let nivonetid = TID(nivzero)
         tid = nivonetid
         id = nivonetid.nivone!
     }
