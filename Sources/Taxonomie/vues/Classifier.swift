@@ -50,7 +50,7 @@ struct ClassPreview: View {
     @State var tid = TID([0])
     
     var body:some View {
-        Classifier($tid, Globalset(classification)).frame(width:500, height:300)
+        Classifier($tid, Globalset(taxonomie)).frame(width:500, height:300)
     }
 }
 
