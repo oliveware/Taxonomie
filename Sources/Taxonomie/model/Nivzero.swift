@@ -6,25 +6,34 @@
 //
 
 import Foundation
-@MainActor
-public struct Nivzero : Codable {
+
+struct Nivzero : Codable, Identifiable, Hashable {
+    static var nom = "zero"
+    
+    static public func ==  (_ a:Nivzero, _ b:Nivzero) -> Bool {
+        a.id == b.id
+    }
+    public func hash (into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     var id:Int
     var tid:TID {
         TID([id])
     }
     var nom = ""
-    var nivones : [Nivone] = []
+    var one : [Nivone] = []
     
-    init(_ id:Int, _ nom:String, _ ones: [Nivone]) {
+    init() {id = 0}
+    init(_ id:Int, _ nom:String, _ nivones: [Nivone]) {
         self.id = id
         self.nom = nom
-        nivones = ones
+       one = nivones
     }
     
    /* init(_ json:String) {
         let jsonData = json.data(using: .utf8)!
-        let carto = try! JSONDecoder().decode(Nivzeroset.self, from: jsonData)
+        let carto = try! JSONDecoder().decode(Nivzero.self, from: jsonData)
         self = carto
     }*/
     
@@ -32,12 +41,12 @@ public struct Nivzero : Codable {
         
     }
     mutating func add() {
-        nivones.append(Nivone(tid))
+        one.append(Nivone(tid))
     }
     
     subscript(_ id:Int) -> Nivone? {
         var found : Nivone?
-        for nivone in nivones {
+        for nivone in one {
             if nivone.id == id {
                 found = nivone
                 break

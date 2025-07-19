@@ -6,8 +6,15 @@
 //
 
 import Foundation
-@MainActor
-public struct Nivthree : Codable, Identifiable {
+
+public struct Nivthree : Codable, Identifiable,Hashable {
+    static public func ==  (_ a:Nivthree, _ b:Nivthree) -> Bool {
+        a.id == b.id
+    }
+    public func hash (into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     
     public var id:Int
     var tid:TID?
@@ -15,13 +22,12 @@ public struct Nivthree : Codable, Identifiable {
     public var nom = ""
   //  public var pays:String { nom }
     
-    var nivfours:[Nivfour] = []
+    var four:[Nivfour] = []
     
-    init() {id = 0}
     init(_ nivtwo:TID) {
-       let nivtwotid = TID(nivtwo)
-        tid = nivtwotid
-        id = nivtwotid.nivthree!
+       let threetid = TID(nivtwo)
+        tid = threetid
+        id = threetid.three!
     }
     
     init(_ json:String) {
@@ -32,7 +38,7 @@ public struct Nivthree : Codable, Identifiable {
 
     subscript(_ id:Int) -> Nivfour? {
         var found : Nivfour?
-        for niv in nivfours {
+        for niv in four {
             if niv.id == id {
                 found = niv
                 break
@@ -42,6 +48,7 @@ public struct Nivthree : Codable, Identifiable {
     }
     
     mutating func add() {
-        nivfours.append(Nivfour(tid ?? TID()))
+        four.append(Nivfour(tid ?? TID()))
     }
+ 
 }

@@ -6,7 +6,7 @@
 //
 import Foundation
 
-@MainActor
+
 struct Globalset: Codable {
     
     var items : [Nivzero]

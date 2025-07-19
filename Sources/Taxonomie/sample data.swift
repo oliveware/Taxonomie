@@ -7,48 +7,77 @@
 
 public let classification = """
 {"items" : [
-    {   "id":1, "nom":"Produits", 
-        "nivones": [
-            {"id":1, "nom":"niveau 1",
-                "nivtwos":[
+    {   "id":1, "nom":"produit", 
+        "one": [
+            {"id":1, "nom":"durable",
+                "two":[
                     {"id":1, "nom":"électro-ménager",
-                        "nivthrees":[
-                            {"id":1,"nom":"four", "nivfours":[]}, 
-                            {"id":2,"nom":"frigo", "nivfours":[]},
-                            {"id":3,"nom":"plaques", "nivfours":[]}
+                        "three":[
+                            {"id":1,"nom":"four", "four":[],"items":[]}, 
+                            {"id":2,"nom":"frigo", "four":[],"items":[]},
+                            {"id":3,"nom":"plaques", "four":[],"items":[]}
                         ]
                     },
                     {"id":2, "nom":"mobilier",
-                        "nivthrees":[
-                            {"id":1,"nom":"chaise", "nivfours":[]}, 
-                            {"id":2,"nom":"table", "nivfours":[]},
-                            {"id":3,"nom":"armoire", "nivfours":[]}
+                        "three":[
+                            {"id":1,"nom":"chaise", "four":[],"items":[]}, 
+                            {"id":2,"nom":"table", "four":[],"items":[]},
+                            {"id":3,"nom":"armoire", "four":[],"items":[]}
                         ]
                     }
                 ]
-            }   
+            },
+            {"id":2, "nom":"consommable",
+                "two":[
+                    {"id":1, "nom":"nourriture",
+                        "three":[
+                            {"id":1,"nom":"riz", "four":[],"items":[]}, 
+                            {"id":2,"nom":"pain", "four":[],"items":[]},
+                            {"id":3,"nom":"fruits", "four":[], "items":[
+                                {"id":1,"nom":"pomme","cond": {"conserve":"frais", "contenant": ""}},
+                                {"id":2,"nom":"poire","cond": {"conserve":"frais", "contenant": ""}},
+                                {"id":3,"nom":"pomme","cond": {"conserve":"conserve", "contenant": "boite"}}
+                                ]
+                            },
+                            {"id":4,"nom":"légumes", "four":[],"items":[
+                                {"id":1,"nom":"pomme de terre","cond": {"conserve":"frais", "contenant": ""}},
+                                {"id":2,"nom":"poireau","cond": {"conserve":"frais", "contenant": ""}},
+                                {"id":3,"nom":"haricot","cond": {"conserve":"conserve", "contenant": "boite"}}
+                            ]
+                            }
+                        ],"items":[]
+                    },
+                    {"id":2, "nom":"entretien",
+                        "three":[
+                            {"id":1,"nom":"lessive", "four":[],"items":[]}, 
+                            {"id":2,"nom":"savon", "four":[],"items":[]},
+                            {"id":3,"nom":"douche", "four":[],"items":[]}
+                        ],"items":[]
+                    }
+                ]
+            }    
         ] 
     },
-    {   "id":1, "nom":"Services", 
-        "nivones": [
-            {"id":1, "nom":"niveau 1",
-                "nivtwos":[
+    {   "id":2, "nom":"service", 
+        "one": [
+            {"id":1, "nom":"eau 1",
+                "two":[
                     {"id":1, "nom":"utility",
-                        "nivthrees":[
-                            {"id":1,"nom":"eau", "nivfours":[]}, 
-                            {"id":2,"nom":"électricité", "nivfours":[
-                                {"id":1,"nom":"heures creuses", "nivfives":[]},
-                                {"id":2,"nom":"heures pleines", "nivfives":[]}
-                            ]},
-                            {"id":3,"nom":"gaz", "nivfours":[]}
-                        ]
+                        "three":[
+                            {"id":1,"nom":"eau", "four":[],"items":[]}, 
+                            {"id":2,"nom":"électricité", "four":[
+                                {"id":1,"nom":"heures creuses", "five":[],"items":[]},
+                                {"id":2,"nom":"heures pleines", "five":[],"items":[]}
+                            ],"items":[]},
+                            {"id":3,"nom":"gaz", "four":[],"items":[]}
+                        ],"items":[]
                     },
                     {"id":2, "nom":"telecom",
-                        "nivthrees":[
-                            {"id":1,"nom":"mobile", "nivfours":[]}, 
-                            {"id":2,"nom":"internet", "nivfours":[]},
-                            {"id":3,"nom":"cloud", "nivfours":[]}
-                        ]
+                        "three":[
+                            {"id":1,"nom":"mobile", "four":[],"items":[]}, 
+                            {"id":2,"nom":"internet", "four":[],"items":[]},
+                            {"id":3,"nom":"cloud", "four":[],"items":[]}
+                        ],"items":[]
                     }
                 ]
             }   

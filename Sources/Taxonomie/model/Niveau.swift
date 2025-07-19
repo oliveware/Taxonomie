@@ -4,47 +4,76 @@
 //
 //  Created by Herve Crespel on 07/07/2025.
 //
-@MainActor
-public struct Niveau {
-    public var nivzero  : Nivzero?
-    public var nivone   : Nivone?
-    public var nivtwo   : Nivtwo?
-    public var nivthree : Nivthree?
-    public var nivfour  : Nivfour?
-    var nivfive         : Nivfive?
+
+struct Niveau {
+    public var zero  : Nivzero?
+    public var one   : Nivone?
+    public var two   : Nivtwo?
+    public var three : Nivthree?
+    public var four  : Nivfour?
+    var five         : Nivfive?
     
-    /*public func adresse(_ complement:String? = nil,_ pays:Bool = false, _ autre:Bool = false) -> String {
-        if nivfive == nil {
-            if nivthree == nil {
-                return nivone == nil ? "définir l'adresse" : nivone!.nom
-            } else {
-                return nivthree!.nom + " " + (pays ? nivone!.nom : "")
+    func show(_ sep:String = "-") -> String {
+        var string = ""
+        if let zeroniv = zero {
+            string = zeroniv.nom
+            if let oneniv = one {
+                string = string + sep + oneniv.nom
+                if let twoniv = two {
+                    string = string + sep + twoniv.nom
+                    if let threeniv = three {
+                        string = string + sep + threeniv.nom
+                        if let fourniv = four {
+                            string = string + sep + fourniv.nom
+                            if let fiveniv = five {
+                                string = string + sep + fiveniv.nom
+                            }
+                        }
+                    }
+                }
             }
-        } else {
-            let adresse = nivfive!.adresse(complement, autre) + " " + nivthree!.nom
-            return adresse + (pays ? "\n" + nivone!.nom : "")
         }
-    }*/
+        return string
+    }
     
-    public  init(_ tid:TID) {
-        let nivzero_id = tid.nivzero
-        if let nivzero = Globalset(classification)[nivzero_id] {
-            self.nivzero = nivzero
-            if tid.nivone != nil {
-                let nivone = nivzero[tid.nivone!]
-                self.nivone = nivone
-                if tid.nivtwo != nil {
-                    let nivtwo = nivone![tid.nivtwo!]
-                    self.nivtwo = nivtwo
-                    if tid.nivthree != nil {
-                        let nivthree = nivtwo![tid.nivthree!]
-                        self.nivthree = nivthree
-                        if tid.nivfour != nil {
-                            let nivfour = nivthree![tid.nivfour!]
-                            self.nivfour = nivfour
-                            if tid.nivfive != nil {
-                                nivfive = nivfour![tid.nivfive!]
-                                if nivfive != nil {nivfive!.tid = tid}
+    var nom: String {
+        var string = ""
+        if let zeroniv = zero {
+            string = zeroniv.nom
+            if let oneniv = one {
+                string = oneniv.nom
+                if let twoniv = two {
+                    string = twoniv.nom
+                    if let threeniv = three {
+                        string = threeniv.nom
+                        if let fourniv = four {
+                            string = fourniv.nom
+                            if let fiveniv = five {
+                                string = fiveniv.nom
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return string
+    }
+    
+    init(_ taxonomy:Globalset, _ tid:TID) {
+        let zero_id = tid.zero
+        if let nivzero = taxonomy[zero_id] {
+            zero = nivzero
+            if let nivone = tid.one {
+                one = nivzero[nivone]
+                if let nivtwo = tid.two {
+                    two = one![nivtwo]
+                    if let nivthree = tid.three {
+                        three = two![nivthree]
+                        if let nivfour = tid.four {
+                            four = three![nivfour]
+                            if let nivfive = tid.five {
+                                five = four![nivfive]
+                                if five != nil {five!.tid = tid}
                             }
                         }
                     }
